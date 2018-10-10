@@ -45,7 +45,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=provincia+de+las+palmas&APPID=a58c376530b8af49dfeb836d445fd911`
+        `https://api.openweathermap.org/data/2.5/weather?q=london&APPID=a58c376530b8af49dfeb836d445fd911`
       );
       const json = await response.json();
       console.log(json);
