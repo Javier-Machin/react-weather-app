@@ -22,6 +22,7 @@ class App extends Component {
   }
 
   handleLocationChange(location) {
+    this.setState({loading: true});
     this.requestData(location);
     this.setState({location: `${location}`});
   }

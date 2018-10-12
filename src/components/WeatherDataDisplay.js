@@ -4,15 +4,32 @@ class WeatherDataDisplay extends Component {
   render() {
     const data = this.props.data;
     const code = parseInt(this.props.data.cod);
+    let sky;
+    let rain;
+
+    if (data.clouds.all >= 75) { 
+      sky = "overcast";
+    } else if (data.clouds.all >= 50) {
+      sky = "cloudy";
+    } else if (data.clouds.all >= 25) {
+      sky = "partially cloudy";
+    } else {
+      sky = "clear";
+    }
+    
+    
+    if (data.weather[0].main === "Rain") {
+      rain = <h3>High probability of rain</h3>;
+    } 
     
     switch (code) {
       case 200:
         return(
           <React.Fragment>
-          <h1>
-            {data.name} temperature: {Math.round(data.main.temp - 273.15)}ºC
-          </h1>
-          <p>{data.clouds.all > 50 ? "cloudy" : "clear"}</p>
+          <h3>{data.name} temperature: {Math.round(data.main.temp - 273.15)}ºC</h3>
+          <h3>Sky: {sky}</h3>
+          <h3>Humidity: {data.main.humidity}%</h3>
+          {rain}
           </React.Fragment>
         );
       case 404:
