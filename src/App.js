@@ -2,7 +2,19 @@ import React, { Component } from 'react';
 import requestData from './lib/requestData';
 import LocationForm from './components/LocationForm';
 import WeatherDataDisplay from './components/WeatherDataDisplay';
+import CityVector from './public/weather-city.jpg';
 import './css/App.css';
+
+
+const city = (
+  <img className="city-vector" src={CityVector} alt="Drawing of some buildings representing a city" />
+); 
+
+const vectorCredit = (
+  <a href="https://www.freepik.com/free-photos-vectors/house">
+    House vector created by Rawpixel.com - Freepik.com
+  </a>
+);
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +28,7 @@ class App extends Component {
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.requestData = requestData.bind(this);
   }
+
 
   componentDidMount() {
     this.requestData(this.state.location);
@@ -31,6 +44,7 @@ class App extends Component {
     if (this.state.loading === true) {
       return(
         <div className="main-container">
+          {city}
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
           <h3>LOADING</h3>
         </div>
@@ -38,6 +52,7 @@ class App extends Component {
     } else {
       return (
         <div className="main-container">
+          {city}
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
           <WeatherDataDisplay data={this.state.data} />
         </div>
