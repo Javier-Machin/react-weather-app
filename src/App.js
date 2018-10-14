@@ -11,7 +11,7 @@ const city = (
 ); 
 
 const vectorCredit = (
-  <a href="https://www.freepik.com/free-photos-vectors/house">
+  <a className="vector-credit" href="https://www.freepik.com/free-photos-vectors/house">
     House vector created by Rawpixel.com - Freepik.com
   </a>
 );
@@ -40,31 +40,45 @@ class App extends Component {
 
   async handleLocationChange(location) {
     this.setState({loading: true});
-    await this.requestData(location);
-    await this.setState({location: `${location}`});
+    this.requestData(location);
+    this.setState({location: `${location}`});
   }
 
   render() {
     if (this.state.loading === true) {
       return(
+        <React.Fragment>
         <div className="main-container">
           <div className="display-container">
             {city}
+            <div className="weather-values loading-message loading-true">Loading</div>
             <WeatherDataDisplay data={this.state.data} />
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} />
-          <h3>LOADING</h3>
+          
         </div>
+        <div className="bottom-nav">
+          <a href="http://www.javiermachin.com">© Javier Machín</a>
+          {vectorCredit}
+        </div>
+        </React.Fragment>
       );
     } else {
       return (
+        <React.Fragment>
         <div className="main-container">
           <div className="display-container">
             {city}
+            <div className="weather-values loading-message">Loading</div>
             <WeatherDataDisplay data={this.state.data} /> 
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
         </div>
+        <div className="bottom-nav">
+          <a href="http://www.javiermachin.com">© Javier Machín</a>
+          {vectorCredit}
+        </div>
+        </React.Fragment>
       );
     }
   }

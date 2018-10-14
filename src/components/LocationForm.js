@@ -22,10 +22,15 @@ class LocationForm extends Component {
 
   render() {
     return(
-      <form onSubmit={(event) => this.handleSubmit(event)}>
-        <label>City:</label>
-        <input name="location" onChange={this.handleChange} type="text" />
-        <input type="submit" />
+      <form className="location-form" onSubmit={(event) => this.handleSubmit(event)}>
+        <input 
+          placeholder="enter a city" 
+          className="location-form__input" 
+          name="location" 
+          onChange={this.handleChange} 
+          type="text" 
+        />
+        <input className="location-form__btn" type="submit" value="Check weather &rarr;"/>
       </form>
     )
   }

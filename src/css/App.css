@@ -26,10 +26,48 @@ html {
   }
 }
 
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  html {
+    font-size: 30%;
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  html {
+    font-size: 25%;
+  }
+}
+
 .main-container {
   width: 50%;
-  margin: 5rem auto;
+  min-width: 280px;
+  margin: 4rem auto;
+  padding-bottom: 15rem;
   text-align: center;
+}
+
+@media only screen and (max-width: 1250px) {
+  .main-container {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .main-container {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .main-container {
+    width: 100%;
+  }
 }
 
 .display-container {
@@ -41,6 +79,12 @@ html {
 .city-vector {
   width: 100%;
   border-radius: 25px 25px 5px 5px;
+}
+
+@media only screen and (max-width: 650px) {
+  .city-vector {
+    border-radius: 0;
+  }
 }
 
 .sun {
@@ -141,16 +185,22 @@ html {
   opacity: 0;
   transition: all 1s;
   background-size: cover;
-  border-radius: 25px 25px 27px 27px;
+  border-radius: 25px 25px 15px 15px;
   z-index: 0;
 }
 
+@media only screen and (max-width: 650px) {
+  .display-filter {
+    border-radius: 0;
+  }
+}
+
 .display-filter-dark {
-  opacity: .09;
+  opacity: .19;
 }
 
 .display-filter-darker {
-  opacity: .12;
+  opacity: .26;
 }
 
 .weather-values {
@@ -161,14 +211,128 @@ html {
   padding: 3rem 0;
   margin-top: -1rem;
   position: relative;
+  text-transform: uppercase;
+  color: white;
   z-index: 25;
-  background-color: white;
-  border-radius: 0 0 5px 5px;
-  border: 3px solid black;
+  background-color: rgba(215,86,44,1);
+  border-radius: 0;
+  border: 1.8px solid rgba(0,0,0,.78);
+  border-width: 1.8px 1.8px 1.8px 1.8px;
   font-family: sans-serif;
-  letter-spacing: .1rem;
+  letter-spacing: .3rem;
+}
+
+.loading-message {
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(245,106,64,1);
+  opacity: 0;
+  background-color: transparent;
+  border: 0;
+  opacity: 0;
+  user-select: none;
+}
+
+.loading-true {
+  opacity: 1;
 }
 
 .weather-values__item {
   position: relative;
+}
+
+.location-form {
+  padding: 4rem 3rem;
+  background-color: rgba(50, 160, 180, 0.7);
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  align-items: center;
+  border: 1.8px solid rgba(0,0,0,.78);
+  border-width: 0 1.8px 1.8px 1.8px;
+  justify-content: space-between;
+}
+
+.location-form__input {
+  font-size: 2rem;
+  border: 0;
+  text-decoration: none;
+  outline: none;
+  padding: 1rem 4rem;
+  width: 30%;
+  border-radius: 5px;
+  border-bottom: 2px solid transparent;
+  color: rgba(0,0,0,.8);
+  letter-spacing: .2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all .5s;
+}
+
+.location-form__input:focus {
+  border-bottom: 2px solid rgba(245,96,44,1);
+  border-radius: 5px 5px 0 0;
+}
+
+.location-form__input::-webkit-input-placeholder {
+  color: rgba(0,0,0,.4);
+  letter-spacing: .2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.location-form__btn {
+  background-color: rgba(25,170,25,.9);
+  font-size: 2rem;
+  border: 0;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  color: white;
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.location-form__btn:focus {
+  outline:0;
+  box-shadow: 0 0 3px 2px rgba(245,96,44,1); 
+}
+
+::selection {
+  background: rgba(245,96,44,1);
+  color: white; 
+}
+::-moz-selection {
+  background: rgba(245,96,44,1);
+  color: white; 
+}
+
+.bottom-nav {
+  position: fixed;
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+  bottom: 0;
+  text-align: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+.bottom-nav a,
+.bottom-nav a:visited {
+  text-decoration: none;
+  color: rgba(0,0,0,.7);
+  margin-right: 5rem;
+  font-size: 1.7rem;
+  transition: all .2s;
+  margin: 0 2rem;
+}
+
+.bottom-nav a:hover,
+.bottom-nav a:visited:hover {
+  color: rgba(245,96,44,1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
