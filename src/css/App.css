@@ -20,15 +20,15 @@ html {
   font-size: 62.5%;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1450px) {
   html {
-    font-size: 45%;
+    font-size: 48%;
   }
 }
 
 @media only screen and (max-width: 900px) {
   html {
-    font-size: 35%;
+    font-size: 38%;
   }
 }
 
@@ -207,7 +207,7 @@ html {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 3rem 0;
   margin-top: -1rem;
   position: relative;
