@@ -87,7 +87,7 @@ class WeatherDataDisplay extends Component {
       cloud5 = "cloud cloud-5 hidden";
     }
 
-    if (data.weather[0].main === "Rain") {
+    if (data.weather[0].main === "Rain" && sky !== "clear") {
       rain = "rain";
       rainValue = "High probability of rain";
       cloud1 = cloud1.concat(" cloud-dark");
@@ -147,5 +147,5 @@ class WeatherDataDisplay extends Component {
 
 export default WeatherDataDisplay
 
-// create component which receives sky status, rain and temperature as props
-// to display different assets
+// create component which receives data and temperature as props
+// returns skyProps
