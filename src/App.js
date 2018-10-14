@@ -21,7 +21,11 @@ class App extends Component {
     super(props);
     this.state = {
       location: "madrid", 
-      data: {cod: 0},
+      data: 
+        {cod: 0,
+         clouds: {all: 0},
+         weather: [{main: ""}]
+      },
       loading: true
     }
 
@@ -44,17 +48,22 @@ class App extends Component {
     if (this.state.loading === true) {
       return(
         <div className="main-container">
-          {city}
-          <LocationForm handleLocationChange={this.handleLocationChange} /> 
+          <div className="display-container">
+            {city}
+            <WeatherDataDisplay data={this.state.data} />
+          </div>
+          <LocationForm handleLocationChange={this.handleLocationChange} />
           <h3>LOADING</h3>
         </div>
       );
     } else {
       return (
         <div className="main-container">
-          {city}
+          <div className="display-container">
+            {city}
+            <WeatherDataDisplay data={this.state.data} />
+          </div>
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
-          <WeatherDataDisplay data={this.state.data} />
         </div>
       );
     }

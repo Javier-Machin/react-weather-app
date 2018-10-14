@@ -22,16 +22,46 @@ html {
   text-align: center;
 }
 
+.display-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 .city-vector {
   width: 100%;
   border-radius: 5px;
 }
 
+.sun {
+  position: absolute;
+  top: -20%;
+  right: -12%;
+  transition: transform 1s, opacity 2s, width 2s;
+  width: 30%;
+}
+
+.sun-hidden {
+  transform: translate(12rem, 35rem);
+  opacity: 0;
+}
+
+.sun-small {
+  width: 25%;
+}
+
+.sun-big {
+  width: 35%;
+}
+
 .cloud {
   position: absolute;
-  top: 5.5rem;
-  left: 48rem;
+  top: 1%;
   transition: all 1s;
+  width: 30%;
+}
+
+.cloud-dark {
   filter: brightness(50%);
 }
 
@@ -42,25 +72,39 @@ html {
 
 .cloud-1 {
   transition: all .8s;
-  left: 48.5rem;
+  left: 1%;
 }
 
 .cloud-2 {
   transition: all 2s;
-  left: 64rem;
+  left: 21%;
 }
 
 .cloud-3 {
   transition: all 1.2s;
-  left: 84rem;
+  left: 36%;
 }
 
 .cloud-4 {
   transition: all 2.5s;
-  left: 95rem;
+  left: 56%;
 }
 
 .cloud-5 {
   transition: all 2.7s;
-  left: 113rem;
+  left: 69%;
+}
+
+.rain {
+  position: absolute;
+  top: 14%;
+  width: 90%;
+  left: 0;
+  filter: saturate(200%) hue-rotate(-15deg);
+  transition: all .8s;
+}
+
+.rain-hidden {
+  transform: translateY(-40rem);
+  opacity: 0;
 }
