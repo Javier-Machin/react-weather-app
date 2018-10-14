@@ -6,6 +6,16 @@
   box-sizing: inherit;
 }
 
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@-moz-keyframes pulse { 50% { -moz-transform: scale(.96); } 100% { -moz-transform: scale(1); } }
+@-webkit-keyframes pulse { 50% { -webkit-transform: scale(.96); } 100% { -webkit-transform: scale(1); } }
+@keyframes pulse {50% { -webkit-transform: scale(.96); transform:scale(.96); } 100% { -webkit-transform: scale(1); transform:scale(1); } }
+
+@keyframes scrolling {50% { background-position: -50px -150%; } 100% { background-position: -100px -300%; }}
+
 html {
   font-size: 62.5%;
 }
@@ -30,19 +40,23 @@ html {
 
 .city-vector {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 25px 25px 5px 5px;
 }
 
 .sun {
   position: absolute;
   top: -20%;
   right: -12%;
-  transition: transform 1s, opacity 2s, width 2s;
+  transition: transform 1s, opacity 2s, width 2s, top 1s, right 1s;
   width: 30%;
+  -webkit-animation:spin 25s linear infinite;
+  -moz-animation:spin 25s linear infinite;
+  animation:spin 25s linear infinite;
 }
 
 .sun-hidden {
-  transform: translate(12rem, 35rem);
+  top: 14rem;
+  right: -30rem;
   opacity: 0;
 }
 
@@ -57,17 +71,15 @@ html {
 .cloud {
   position: absolute;
   top: 1%;
-  transition: all 1s;
+  transition: opacity 5s;
   width: 30%;
+  -webkit-animation:pulse 4s linear infinite;
+  -moz-animation:pulse 4s linear infinite;
+  animation:pulse 4s linear infinite;
 }
 
 .cloud-dark {
   filter: brightness(50%);
-}
-
-.hidden {
-  transform: translateX(-100rem);
-  opacity: 0;
 }
 
 .cloud-1 {
@@ -95,16 +107,68 @@ html {
   left: 69%;
 }
 
+.hidden {
+  left: -30rem !important;
+  transition: all 2s;
+  opacity: 0;
+}
+
 .rain {
   position: absolute;
-  top: 14%;
-  width: 90%;
-  left: 0;
-  filter: saturate(200%) hue-rotate(-15deg);
-  transition: all .8s;
+  top: 22%;
+  width: 110%;
+  height: 53%;
+  left: -5%;
+  opacity: .6;
+  transition: all 1.2s;
+  background-size: 100%;
+  background-repeat: repeat;
+  animation: scrolling 4s linear infinite;
 }
 
 .rain-hidden {
-  transform: translateY(-40rem);
+  transform: translateY(-80rem);
   opacity: 0;
+}
+
+.display-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90.15%;
+  background-color: black;
+  opacity: 0;
+  transition: all 1s;
+  background-size: cover;
+  border-radius: 25px 25px 27px 27px;
+  z-index: 0;
+}
+
+.display-filter-dark {
+  opacity: .09;
+}
+
+.display-filter-darker {
+  opacity: .12;
+}
+
+.weather-values {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+  padding: 3rem 0;
+  margin-top: -1rem;
+  position: relative;
+  z-index: 25;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  border: 3px solid black;
+  font-family: sans-serif;
+  letter-spacing: .1rem;
+}
+
+.weather-values__item {
+  position: relative;
 }

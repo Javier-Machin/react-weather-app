@@ -38,10 +38,10 @@ class App extends Component {
     this.requestData(this.state.location);
   }
 
-  handleLocationChange(location) {
+  async handleLocationChange(location) {
     this.setState({loading: true});
-    this.requestData(location);
-    this.setState({location: `${location}`});
+    await this.requestData(location);
+    await this.setState({location: `${location}`});
   }
 
   render() {
@@ -61,7 +61,7 @@ class App extends Component {
         <div className="main-container">
           <div className="display-container">
             {city}
-            <WeatherDataDisplay data={this.state.data} />
+            <WeatherDataDisplay data={this.state.data} /> 
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
         </div>

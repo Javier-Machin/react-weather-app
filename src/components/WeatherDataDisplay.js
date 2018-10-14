@@ -19,20 +19,19 @@ class WeatherDataDisplay extends Component {
     };
   }
 
-  componentDidMount(){
-    setTimeout(() => {
-      this.setState({
-        sun:    "sun",
-        cloud1: "cloud cloud-1",
-        cloud2: "cloud cloud-2",
-        cloud3: "cloud cloud-3",
-        cloud4: "cloud cloud-4",
-        cloud5: "cloud cloud-5",
-        rain:   "rain"
-      }
-    )}, 100);
-    
-  }
+  // componentDidMount(){
+  //   setTimeout(() => {
+  //     this.setState({
+  //       sun:    "sun",
+  //       cloud1: "cloud cloud-1",
+  //       cloud2: "cloud cloud-2",
+  //       cloud3: "cloud cloud-3",
+  //       cloud4: "cloud cloud-4",
+  //       cloud5: "cloud cloud-5",
+  //       rain:   "rain"
+  //     }
+  //   )}, 5500);
+  // }
 
   render() {
     const data = this.props.data;
@@ -48,6 +47,7 @@ class WeatherDataDisplay extends Component {
     let rain = "rain rain-hidden";
     let rainValue = "false";
     let temperature = "";
+    let displayFilter = "display-filter";
 
     if (code === 200) {
       temperature = Math.round(data.main.temp - 273.15);
@@ -61,6 +61,7 @@ class WeatherDataDisplay extends Component {
       cloud3 = "cloud cloud-3";
       cloud4 = "cloud cloud-4";
       cloud5 = "cloud cloud-5";
+      displayFilter = "display-filter display-filter-dark";
     } else if (data.clouds.all >= 50) {
       sky = "Cloudy";
       sun = "sun";
@@ -95,6 +96,8 @@ class WeatherDataDisplay extends Component {
       cloud3 = cloud3.concat(" cloud-dark");
       cloud4 = cloud4.concat(" cloud-dark");
       cloud5 = cloud5.concat(" cloud-dark");
+      displayFilter = displayFilter.concat(" display-filter-darker");
+      sun = sun.concat(" sun-small");
     } 
 
     if (temperature >= 25) {
@@ -102,16 +105,21 @@ class WeatherDataDisplay extends Component {
     } else if (temperature <= 15) {
       sun = sun.concat(" sun-small");
     }
-    
+
+    const rainStyle = {
+      backgroundImage: 'url(' + Rain + ')'
+    };
+
     skyProps = (
       <React.Fragment>
       <img className={sun} src={Sun} alt="Sun drawing" />
-      <img className={rain} src={Rain} alt="Rain drops" />
+      <div className={rain} style={rainStyle}></div>
       <img className={cloud1} src={Cloud} alt="Small cloud" />
       <img className={cloud2} src={Cloud} alt="Small cloud" />
       <img className={cloud3} src={Cloud} alt="Small cloud" />
       <img className={cloud4} src={Cloud} alt="Small cloud" />
       <img className={cloud5} src={Cloud} alt="Small cloud" />
+      <div className={displayFilter}></div>
       </React.Fragment>
     );
 
@@ -120,10 +128,13 @@ class WeatherDataDisplay extends Component {
         return(
           <React.Fragment>
           {skyProps}
-          <h3>{data.name} temperature: {temperature}ºC</h3>
-          <h3>Sky: {sky}</h3>
-          <h3>Humidity: {data.main.humidity}%</h3>
-          <h3>Rain: {rainValue}</h3>
+          <div className="weather-values">
+            <div className="weather-values__item">{data.name}</div>
+            <div className="weather-values__item">{temperature}ºC</div>
+            <div className="weather-values__item">{sky}</div>
+            <div className="weather-values__item">Humidity: {data.main.humidity}%</div>
+            <div className="weather-values__item">Rain: {rainValue}</div>
+          </div>
           </React.Fragment>
         );
       case 404:
@@ -149,3 +160,9 @@ export default WeatherDataDisplay
 
 // create component which receives data and temperature as props
 // returns skyProps
+
+// add filter to city
+
+// better rain asset
+
+// <img className={rain} src={Rain} alt="Rain drops" />
