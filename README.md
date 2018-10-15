@@ -7,4 +7,4 @@ as a representation in the picture and the most important stats.
 
 It can make new requests without reloading the page.
 
-![React Weather App gif](public/weatherapp.gif)
+<img src=public/weatherapp.gif alt="React Weather App gif" width="100%"> 
