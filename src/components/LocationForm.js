@@ -18,6 +18,7 @@ class LocationForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.handleLocationChange(this.state.location);
+    event.target.reset();
   }
 
   render() {

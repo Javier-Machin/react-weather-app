@@ -8,7 +8,9 @@ import './css/App.css';
 
 const city = (
   <img className="city-vector" src={CityVector} alt="Drawing of some buildings representing a city" />
-); 
+);
+
+const portfolioLink = (<a href="http://www.javiermachin.com">© Javier Machín</a>); 
 
 const vectorCredit = (
   <a className="vector-credit" href="https://www.freepik.com/free-photos-vectors/house">
@@ -33,12 +35,11 @@ class App extends Component {
     this.requestData = requestData.bind(this);
   }
 
-
   componentDidMount() {
     this.requestData(this.state.location);
   }
 
-  async handleLocationChange(location) {
+  handleLocationChange(location) {
     this.setState({loading: true});
     this.requestData(location);
     this.setState({location: `${location}`});
@@ -55,10 +56,9 @@ class App extends Component {
             <WeatherDataDisplay data={this.state.data} />
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} />
-          
         </div>
         <div className="bottom-nav">
-          <a href="http://www.javiermachin.com">© Javier Machín</a>
+          {portfolioLink}
           {vectorCredit}
         </div>
         </React.Fragment>
@@ -75,7 +75,7 @@ class App extends Component {
           <LocationForm handleLocationChange={this.handleLocationChange} /> 
         </div>
         <div className="bottom-nav">
-          <a href="http://www.javiermachin.com">© Javier Machín</a>
+          {portfolioLink}
           {vectorCredit}
         </div>
         </React.Fragment>

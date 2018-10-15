@@ -4,7 +4,6 @@ async function requestData(location) {
       `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=a58c376530b8af49dfeb836d445fd911`
     );
     const json = await response.json();
-    console.log(json);
     // Fake extra loading time before setting state
     setTimeout(()=>{this.setState({ 
       data: json, 
