@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/SkyProps.css';
 import Cloud from '../public/cloud-1.png';
 import Sun from '../public/sun.png';
 import Rain from '../public/rain.png';

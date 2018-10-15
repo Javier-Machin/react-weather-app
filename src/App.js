@@ -52,7 +52,7 @@ class App extends Component {
         <div className="main-container">
           <div className="display-container">
             {city}
-            <div className="weather-values loading-message loading-true">Loading</div>
+            <div className="loading-message loading-true">Loading</div>
             <WeatherDataDisplay data={this.state.data} />
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} />
@@ -69,7 +69,7 @@ class App extends Component {
         <div className="main-container">
           <div className="display-container">
             {city}
-            <div className="weather-values loading-message">Loading</div>
+            <div className="loading-message">Loading</div>
             <WeatherDataDisplay data={this.state.data} /> 
           </div>
           <LocationForm handleLocationChange={this.handleLocationChange} /> 

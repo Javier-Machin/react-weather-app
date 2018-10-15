@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/WeatherDataDisplay.css';
 import SkyProps from './SkyProps';
 
 class WeatherDataDisplay extends Component {
