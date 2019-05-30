@@ -1,41 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../css/LocationForm.css';
 
-class LocationForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      location: ''
-    };
+// Form to enter the location for the weather request
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const LocationForm = props => {
+  // Use state hook
+  const [location, setLocation] = useState('');
 
-  handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
-  }
+  const handleChange = event => {
+    setLocation(event.target.value);
+  };
 
-  handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault();
-    this.props.handleLocationChange(this.state.location);
+    props.handleLocationChange(location);
+    // Reset input after submit
     event.target.reset();
-  }
+  };
 
-  render() {
-    return(
-      <form className="location-form" onSubmit={(event) => this.handleSubmit(event)}>
-        <input 
-          placeholder="enter a city" 
-          className="location-form__input" 
-          name="location" 
-          onChange={this.handleChange} 
-          type="text" 
-        />
-        <input className="location-form__btn" type="submit" value="Check weather &rarr;"/>
-      </form>
-    )
-  }
-}
+  return (
+    <form className="location-form" onSubmit={handleSubmit}>
+      <input
+        placeholder="enter a city"
+        className="location-form__input"
+        name="location"
+        onChange={handleChange}
+        type="text"
+      />
+      <input className="location-form__btn" type="submit" value="Check weather &rarr;" />
+    </form>
+  );
+};
 
-export default LocationForm
+export default LocationForm;

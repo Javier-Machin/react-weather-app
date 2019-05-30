@@ -9,10 +9,10 @@
   text-transform: uppercase;
   color: white;
   z-index: 25;
-  background-color: rgba(215,86,44,1);
+  background-color: rgba(215, 86, 44, 1);
   border-radius: 0;
-  border: 1.8px solid rgba(0,0,0,.78);
+  border: 1.8px solid rgba(0, 0, 0, 0.78);
   border-width: 1.8px 1.8px 1.8px 1.8px;
   font-family: sans-serif;
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
 }

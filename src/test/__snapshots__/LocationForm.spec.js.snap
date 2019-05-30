@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationForm should render correctly 1`] = `
+<form
+  className="location-form"
+  onSubmit={[Function]}
+>
+  <input
+    className="location-form__input"
+    name="location"
+    onChange={[Function]}
+    placeholder="enter a city"
+    type="text"
+  />
+  <input
+    className="location-form__btn"
+    type="submit"
+    value="Check weather →"
+  />
+</form>
+`;

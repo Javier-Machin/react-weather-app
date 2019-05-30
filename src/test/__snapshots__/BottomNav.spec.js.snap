@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomNav should render correctly 1`] = `
+<footer
+  className="bottom-nav"
+>
+  <a
+    href="http://www.javiermachin.com"
+  >
+    © Javier Machín
+  </a>
+  <a
+    className="vector-credit"
+    href="https://www.freepik.com/free-photos-vectors/house"
+  >
+    House vector created by Rawpixel.com - Freepik.com
+  </a>
+</footer>
+`;

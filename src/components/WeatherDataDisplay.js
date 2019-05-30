@@ -1,64 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/WeatherDataDisplay.css';
-import SkyProps from './SkyProps';
 
-class WeatherDataDisplay extends Component {
+const WeatherDataDisplay = props => {
+  const { statusCode } = props;
 
-  render() {
-    const data = this.props.data;
-    const code = parseInt(this.props.data.cod);
-    let sky;
-    let rainValue = "rain unlikely";
-    let temperature = "";
+  // Return different elements depending on request status code
 
-    if (code === 200) {
-       temperature = Math.round(data.main.temp - 273.15);
-      if (data.clouds.all >= 75) {
-        sky = "Overcast";
-      } else if (data.clouds.all >= 50) {
-        sky = "Cloudy";
-      } else if (data.clouds.all >= 25) {
-        sky = "Partially cloudy";
-      } else {
-        sky = "clear";
-      }
+  switch (statusCode) {
+    case 200:
+      const {
+        temperature,
+        skyStatus,
+        rainProbability,
+        location,
+        humidity
+      } = props.weatherData;
 
-      if (data.weather[0].main === "Rain" && sky !== "clear") {
-        rainValue = "rain: highly probable";
-      } 
-    }
+      return (
+        <section className="weather-values">
+          <p>{location}</p>
+          <p>{temperature}ºC</p>
+          <p>{skyStatus}</p>
+          <p>Humidity: {humidity}%</p>
+          <p>{rainProbability}</p>
+        </section>
+      );
+    case 404:
+      return <section className="weather-values">City not found</section>;
+    case 503:
+      return <section className="weather-values">Service unavailable</section>;
+    default:
+      return null;
+  }
+};
 
-    switch (code) {
-      case 200:
-        return(
-          <React.Fragment>
-          <SkyProps data={data} />
-          <div className="weather-values">
-            <div>{data.name}</div>
-            <div>{temperature}ºC</div>
-            <div>{sky}</div>
-            <div>Humidity: {data.main.humidity}%</div>
-            <div>{rainValue}</div>
-          </div>
-          </React.Fragment>
-        );
-      case 404:
-        return(
-          <React.Fragment>
-          <div className="weather-values">City not found</div>
-          </React.Fragment>
-        );
-      case 503:
-        return(
-          <React.Fragment>
-          <div className="weather-values">Service unavailable</div>
-          </React.Fragment>
-        );
-
-      default:
-        return null;
-      }
-  };
-}
-
-export default WeatherDataDisplay
+export default WeatherDataDisplay;

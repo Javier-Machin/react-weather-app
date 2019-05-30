@@ -1,12 +1,55 @@
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 
-@-moz-keyframes pulse { 50% { -moz-transform: scale(.96); } 100% { -moz-transform: scale(1); } }
-@-webkit-keyframes pulse { 50% { -webkit-transform: scale(.96); } 100% { -webkit-transform: scale(1); } }
-@keyframes pulse {50% { -webkit-transform: scale(.96); transform:scale(.96); } 100% { -webkit-transform: scale(1); transform:scale(1); } }
+@-moz-keyframes pulse {
+  50% {
+    -moz-transform: scale(0.96);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@-webkit-keyframes pulse {
+  50% {
+    -webkit-transform: scale(0.96);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes pulse {
+  50% {
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 
-@keyframes scrolling {50% { background-position: -50px -150%; } 100% { background-position: -100px -300%; }}
+@keyframes scrolling {
+  50% {
+    background-position: -50px -150%;
+  }
+  100% {
+    background-position: -100px -300%;
+  }
+}
 
 .sun {
   position: absolute;
@@ -14,9 +57,9 @@
   right: -12%;
   transition: transform 1s, opacity 2s, width 2s, top 1s, right 1s;
   width: 30%;
-  -webkit-animation:spin 25s linear infinite;
-  -moz-animation:spin 25s linear infinite;
-  animation:spin 25s linear infinite;
+  -webkit-animation: spin 25s linear infinite;
+  -moz-animation: spin 25s linear infinite;
+  animation: spin 25s linear infinite;
 }
 
 .sun-hidden {
@@ -38,9 +81,9 @@
   top: 1%;
   transition: opacity 5s;
   width: 30%;
-  -webkit-animation:pulse 4s linear infinite;
-  -moz-animation:pulse 4s linear infinite;
-  animation:pulse 4s linear infinite;
+  -webkit-animation: pulse 4s linear infinite;
+  -moz-animation: pulse 4s linear infinite;
+  animation: pulse 4s linear infinite;
 }
 
 .cloud-dark {
@@ -48,7 +91,7 @@
 }
 
 .cloud-1 {
-  transition: all .8s;
+  transition: all 0.8s;
   left: 1%;
 }
 
@@ -84,7 +127,7 @@
   width: 110%;
   height: 53%;
   left: -5%;
-  opacity: .6;
+  opacity: 0.6;
   transition: all 1.2s;
   background-size: 100%;
   background-repeat: repeat;
@@ -117,9 +160,9 @@
 }
 
 .display-filter-dark {
-  opacity: .19;
+  opacity: 0.19;
 }
 
 .display-filter-darker {
-  opacity: .26;
+  opacity: 0.26;
 }

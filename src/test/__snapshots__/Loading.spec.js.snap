@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingMessage should render correctly 1`] = `
+<div
+  className="loading-message"
+>
+  Loading
+</div>
+`;

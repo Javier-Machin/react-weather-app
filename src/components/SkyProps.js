@@ -1,90 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Cloud from '../images/cloud-1.png';
+import Sun from '../images/sun.png';
+import Rain from '../images/rain.png';
+import skyPropsHandler from '../utils/skyPropsHandler';
 import '../css/SkyProps.css';
-import Cloud from '../public/cloud-1.png';
-import Sun from '../public/sun.png';
-import Rain from '../public/rain.png';
 
-class SkyProps extends Component {
-  
-  render() {
-    const data = this.props.data;
-    const temperature = Math.round(data.main.temp - 273.15);
-    const rainStyle = { backgroundImage: 'url(' + Rain + ')' };
-    let sky;
-    let sun;
-    let cloud1;
-    let cloud2;
-    let cloud3;
-    let cloud4;
-    let cloud5;
-    let rain = "rain rain-hidden";    
-    let displayFilter = "display-filter";
+// Animated sky objects that change and move around depending on weather data
 
-    if (data.clouds.all >= 75) {
-      sky = "Overcast";
-      sun = "sun sun-hidden";
-      cloud1 = "cloud cloud-1";
-      cloud2 = "cloud cloud-2";
-      cloud3 = "cloud cloud-3";
-      cloud4 = "cloud cloud-4";
-      cloud5 = "cloud cloud-5";
-      displayFilter = "display-filter display-filter-dark";
-    } else if (data.clouds.all >= 50) {
-      sky = "Cloudy";
-      sun = "sun";
-      cloud1 = "cloud cloud-1";
-      cloud2 = "cloud cloud-2 hidden";
-      cloud3 = "cloud cloud-3";
-      cloud4 = "cloud cloud-4 hidden";
-      cloud5 = "cloud cloud-5";
-    } else if (data.clouds.all >= 25) {
-      sky = "Partially cloudy";
-      sun = "sun";
-      cloud1 = "cloud cloud-1 hidden";
-      cloud2 = "cloud cloud-2";
-      cloud3 = "cloud cloud-3 hidden";
-      cloud4 = "cloud cloud-4";
-      cloud5 = "cloud cloud-5 hidden";
-    } else {
-      sky = "clear";
-      sun = "sun";
-      cloud1 = "cloud cloud-1 hidden";
-      cloud2 = "cloud cloud-2 hidden";
-      cloud3 = "cloud cloud-3 hidden";
-      cloud4 = "cloud cloud-4 hidden";
-      cloud5 = "cloud cloud-5 hidden";
-    }
+const SkyProps = props => {
+  const { weatherData, statusCode } = props;
+  // If the request was successful
+  if (statusCode === 200) {
+    // Get CSS classes for all props depending on weather
+    const {
+      cloudsClasses,
+      sunClasses,
+      displayFilterClasses,
+      rainClasses
+    } = skyPropsHandler(weatherData);
 
-    if (data.weather[0].main === "Rain" && sky !== "clear") {
-      rain = "rain";
-      cloud1 = cloud1.concat(" cloud-dark");
-      cloud2 = cloud2.concat(" cloud-dark");
-      cloud3 = cloud3.concat(" cloud-dark");
-      cloud4 = cloud4.concat(" cloud-dark");
-      cloud5 = cloud5.concat(" cloud-dark");
-      displayFilter = displayFilter.concat(" display-filter-darker");
-      sun = sun.concat(" sun-small");
-    } 
+    // Set rain background image
+    const rainStyle = { backgroundImage: `url(${Rain})` };
 
-    if (temperature >= 25) {
-      sun = sun.concat(" sun-big");
-    } else if (temperature <= 15) {
-      sun = sun.concat(" sun-small");
-    }
-    
-    return(
+    return (
       <React.Fragment>
-      <img className={sun} src={Sun} alt="Sun drawing" />
-      <div className={rain} style={rainStyle}></div>
-      <img className={cloud1} src={Cloud} alt="Small cloud" />
-      <img className={cloud2} src={Cloud} alt="Small cloud" />
-      <img className={cloud3} src={Cloud} alt="Small cloud" />
-      <img className={cloud4} src={Cloud} alt="Small cloud" />
-      <img className={cloud5} src={Cloud} alt="Small cloud" />
-      <div className={displayFilter}></div>
+        <img className={sunClasses} src={Sun} alt="Sun drawing" />
+        <div className={rainClasses} style={rainStyle} />
+        <img className={cloudsClasses[0]} src={Cloud} alt="Small cloud" />
+        <img className={cloudsClasses[1]} src={Cloud} alt="Small cloud" />
+        <img className={cloudsClasses[2]} src={Cloud} alt="Small cloud" />
+        <img className={cloudsClasses[3]} src={Cloud} alt="Small cloud" />
+        <img className={cloudsClasses[4]} src={Cloud} alt="Small cloud" />
+        <div className={displayFilterClasses} />
       </React.Fragment>
     );
+  } else {
+    return null;
   }
-}
+};
 
-export default SkyProps
+export default SkyProps;

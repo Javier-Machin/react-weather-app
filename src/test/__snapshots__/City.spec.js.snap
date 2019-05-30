@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`City should render correctly 1`] = `
+<img
+  alt="Drawing of some buildings representing a city"
+  className="city-vector"
+  src="weather-city.jpg"
+/>
+`;

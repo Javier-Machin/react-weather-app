@@ -4,9 +4,10 @@
   "private": true,
   "homepage": "https://javier-machin.github.io/react-weather-app",
   "dependencies": {
+    "enzyme": "^3.9.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,6 +20,27 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 55,
+        "statements": 70
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -26,6 +48,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme-adapter-react-16": "^1.13.2",
+    "enzyme-to-json": "^3.3.5",
     "gh-pages": "^2.0.1"
   }
 }

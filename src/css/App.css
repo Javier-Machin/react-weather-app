@@ -83,7 +83,7 @@ html {
   left: 50%;
   font-size: 3rem;
   transform: translateX(-50%);
-  color: rgba(245,106,64,1);
+  color: rgba(245, 106, 64, 1);
   opacity: 0;
   background-color: transparent;
   border: 0;
@@ -92,7 +92,7 @@ html {
   text-transform: uppercase;
   z-index: 25;
   font-family: sans-serif;
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
 }
 
 .loading-true {
@@ -100,13 +100,13 @@ html {
 }
 
 ::selection {
-  background: rgba(245,96,44,1);
-  color: white; 
+  background: rgba(245, 96, 44, 1);
+  color: white;
 }
 
 ::-moz-selection {
-  background: rgba(245,96,44,1);
-  color: white; 
+  background: rgba(245, 96, 44, 1);
+  color: white;
 }
 
 .bottom-nav {
@@ -124,16 +124,16 @@ html {
 .bottom-nav a,
 .bottom-nav a:visited {
   text-decoration: none;
-  color: rgba(0,0,0,.7);
+  color: rgba(0, 0, 0, 0.7);
   margin-right: 5rem;
   font-size: 1.7rem;
-  transition: all .2s;
+  transition: all 0.2s;
   margin: 0 2rem;
 }
 
 .bottom-nav a:hover,
 .bottom-nav a:visited:hover {
-  color: rgba(245,96,44,1);
+  color: rgba(245, 96, 44, 1);
   -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  transform: scale(1.1);
 }

@@ -1,88 +1,66 @@
-import React, { Component } from 'react';
-import requestData from './lib/requestData';
+import React, { Component, Fragment } from 'react';
+import requestData from './api/requestData';
 import LocationForm from './components/LocationForm';
 import WeatherDataDisplay from './components/WeatherDataDisplay';
-import CityVector from './public/weather-city.jpg';
+import BottomNav from './components/BottomNav';
+import City from './components/City';
+import SkyProps from './components/SkyProps';
+import LoadingMessage from './components/Loading';
+import initialData from './utils/initialData';
+import sanitizeWeatherData from './utils/sanitizeWeatherData';
 import './css/App.css';
 
-
-const city = (
-  <img className="city-vector" src={CityVector} alt="Drawing of some buildings representing a city" />
-);
-
-const portfolioLink = (<a href="http://www.javiermachin.com">© Javier Machín</a>); 
-
-const vectorCredit = (
-  <a className="vector-credit" href="https://www.freepik.com/free-photos-vectors/house">
-    House vector created by Rawpixel.com - Freepik.com
-  </a>
-);
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      location: "madrid", 
-      data: 
-        {cod: 0,
-         clouds: {all: 0},
-         weather: [{main: ""}]
-      },
-      loading: true
-    }
-
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    this.requestData = requestData.bind(this);
-  }
+  state = {
+    location: 'madrid',
+    weatherData: initialData,
+    loading: true,
+    statusCode: 0
+  };
 
   componentDidMount() {
-    this.requestData(this.state.location);
+    // Request first load data
+    this.handleLocationChange(this.state.location);
   }
 
-  handleLocationChange(location) {
-    this.setState({loading: true});
-    this.requestData(location);
-    this.setState({location: `${location}`});
-  }
+  handleLocationChange = async location => {
+    const { loading } = this.state;
+
+    // Set loading true while waiting for the request
+    if (!loading) this.setState({ loading: true });
+
+    // API request
+    const data = await requestData(location);
+
+    // Get request status
+    let statusCode = parseInt(data.cod);
+    if (!statusCode) statusCode = 503;
+
+    // Sanitize data only on success code
+    const weatherData = statusCode === 200 ? sanitizeWeatherData(data) : null;
+
+    // Update data and set loading to false
+    this.setState({ location, weatherData, loading: false, statusCode });
+  };
 
   render() {
-    if (this.state.loading === true) {
-      return(
-        <React.Fragment>
-        <div className="main-container">
-          <div className="display-container">
-            {city}
-            <div className="loading-message loading-true">Loading</div>
-            <WeatherDataDisplay data={this.state.data} />
-          </div>
+    const { loading, weatherData, statusCode } = this.state;
+
+    return (
+      <Fragment>
+        <main className="main-container">
+          <section className="display-container">
+            <City />
+            <SkyProps weatherData={weatherData} statusCode={statusCode} />
+            <LoadingMessage loading={loading} />
+            <WeatherDataDisplay weatherData={weatherData} statusCode={statusCode} />
+          </section>
           <LocationForm handleLocationChange={this.handleLocationChange} />
-        </div>
-        <div className="bottom-nav">
-          {portfolioLink}
-          {vectorCredit}
-        </div>
-        </React.Fragment>
-      );
-    } else {
-      return (
-        <React.Fragment>
-        <div className="main-container">
-          <div className="display-container">
-            {city}
-            <div className="loading-message">Loading</div>
-            <WeatherDataDisplay data={this.state.data} /> 
-          </div>
-          <LocationForm handleLocationChange={this.handleLocationChange} /> 
-        </div>
-        <div className="bottom-nav">
-          {portfolioLink}
-          {vectorCredit}
-        </div>
-        </React.Fragment>
-      );
-    }
+        </main>
+        <BottomNav />
+      </Fragment>
+    );
   }
- 
 }
 
 export default App;
