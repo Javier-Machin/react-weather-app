@@ -1,15 +1,17 @@
 {
-  "main.css": "/react-weather-app/static/css/main.9facd1d6.chunk.css",
-  "main.js": "/react-weather-app/static/js/main.875abaa6.chunk.js",
-  "main.js.map": "/react-weather-app/static/js/main.875abaa6.chunk.js.map",
-  "static/js/1.ca496f88.chunk.js": "/react-weather-app/static/js/1.ca496f88.chunk.js",
-  "static/js/1.ca496f88.chunk.js.map": "/react-weather-app/static/js/1.ca496f88.chunk.js.map",
-  "runtime~main.js": "/react-weather-app/static/js/runtime~main.72a6b7ef.js",
-  "runtime~main.js.map": "/react-weather-app/static/js/runtime~main.72a6b7ef.js.map",
-  "static/css/main.9facd1d6.chunk.css.map": "/react-weather-app/static/css/main.9facd1d6.chunk.css.map",
-  "static/media/rain.png": "/react-weather-app/static/media/rain.e0bb6c51.png",
-  "static/media/weather-city.jpg": "/react-weather-app/static/media/weather-city.40382ff2.jpg",
-  "index.html": "/react-weather-app/index.html",
-  "precache-manifest.775a4f7e7c90b3196e6d644cef6dac42.js": "/react-weather-app/precache-manifest.775a4f7e7c90b3196e6d644cef6dac42.js",
-  "service-worker.js": "/react-weather-app/service-worker.js"
+  "files": {
+    "main.css": "/react-weather-app/static/css/main.7f269bfa.chunk.css",
+    "main.js": "/react-weather-app/static/js/main.5861f88a.chunk.js",
+    "main.js.map": "/react-weather-app/static/js/main.5861f88a.chunk.js.map",
+    "runtime~main.js": "/react-weather-app/static/js/runtime~main.7e96bc80.js",
+    "runtime~main.js.map": "/react-weather-app/static/js/runtime~main.7e96bc80.js.map",
+    "static/js/2.0f6d48c1.chunk.js": "/react-weather-app/static/js/2.0f6d48c1.chunk.js",
+    "static/js/2.0f6d48c1.chunk.js.map": "/react-weather-app/static/js/2.0f6d48c1.chunk.js.map",
+    "index.html": "/react-weather-app/index.html",
+    "precache-manifest.dd54dd14776438e676b084226c83c205.js": "/react-weather-app/precache-manifest.dd54dd14776438e676b084226c83c205.js",
+    "service-worker.js": "/react-weather-app/service-worker.js",
+    "static/css/main.7f269bfa.chunk.css.map": "/react-weather-app/static/css/main.7f269bfa.chunk.css.map",
+    "static/media/rain.png": "/react-weather-app/static/media/rain.e0bb6c51.png",
+    "static/media/weather-city.jpg": "/react-weather-app/static/media/weather-city.40382ff2.jpg"
+  }
 }
